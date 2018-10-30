@@ -1,0 +1,28 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://souche.oss-cn-hangzhou.aliyuncs.com/files/dubbo/dubbo.xsd ">
+	<dubbo:application name="dubboTest" />
+	<!--扫描dubbo注解服务声明 -->
+<!-- 	<dubbo:annotation package="com.dubbo.test" /> -->
+<!-- 	<context:annotation-config /> -->
+	<context:component-scan base-package="com" />
+	<dubbo:registry address="zookeeper://localhost:2181?bwencrytype=xx" check="false">
+    </dubbo:registry>
+    <!-- 用dubbo协议在20881端口服务 -->
+    <dubbo:protocol name="dubbo" port="20881" />
+     <!--使用 dubbo 协议调用定义好的 api.PermissionService 接口-->
+<!--     <dubbo:reference id="demoService" interface="com.dubbo.test.service.DemoService" check="false"/> -->
+    
+    <!-- 全局设置 -->
+<!--     <dubbo:consumer  timeout="600000" check="false"  default="false"/> -->
+</beans>
